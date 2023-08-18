@@ -14,7 +14,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/books/1" element={<SingleBookPage />} />
+        <Route path="/books/:bookId" element={<SingleBookPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

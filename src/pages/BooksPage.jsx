@@ -1,29 +1,6 @@
 import { Link } from 'react-router-dom';
+import { bookData } from '../assets/db';
 
-const bookData = [
-  {
-    id: 1,
-    title: 'The Catcher in the Rye',
-    author: 'J.D. Salinger',
-    year: 1951,
-    genre: 'Bildungsroman',
-  },
-  {
-    id: 2,
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    year: 1960,
-    genre: 'Southern Gothic',
-  },
-  {
-    id: 3,
-    title: '1984',
-    author: 'George Orwell',
-    year: 1949,
-    genre: 'Dystopian Fiction',
-  },
-  // add more books here
-];
 export default function BooksPage() {
   return (
     <div className="container">
@@ -35,7 +12,7 @@ export default function BooksPage() {
         {/* sukti cikla per bookData ir sugeneruoti nuorodas su title */}
         {bookData.map((bObj) => (
           <li key={bObj.id}>
-            <Link className="underline" to={'/books/1'}>
+            <Link className="underline" to={`/books/${bObj.id}`}>
               {bObj.title}
             </Link>
           </li>
