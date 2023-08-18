@@ -1,7 +1,20 @@
 import { Link } from 'react-router-dom';
 import { bookData } from '../assets/db';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function BooksPage() {
+  useEffect(() => {
+    axios
+      .get('/db/books.json')
+      .then((resp) => {
+        console.log('resp.data ===', resp.data);
+      })
+      .catch((error) => {
+        console.warn('ivyko klaida:', error);
+      });
+  }, []);
+
   return (
     <div className="container">
       <h1 className="text-3xl font-bold underline pb-4">Books page</h1>
