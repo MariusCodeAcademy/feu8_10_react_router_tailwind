@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <header className="mb-4  ">
@@ -6,18 +7,18 @@ export default function Header() {
           React<span className="font-bold">Router</span>
         </a>
         <nav>
-          <a
-            href="/"
+          <Link
+            to="/"
             className="border hover:bg-slate-200 border-black  px-3 py-1"
           >
             Home
-          </a>
-          <a
-            href="/about"
+          </Link>
+          <Link
+            to="/about"
             className="border hover:bg-slate-200 border-black  px-3 py-1"
           >
             About
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
