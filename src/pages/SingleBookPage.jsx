@@ -14,7 +14,7 @@ export default function SingleBookPage() {
     const found = bookData.find((bObj) => bObj.id.toString() === params.bookId);
     console.log('found ===', found);
     setCurrentBook(found);
-  }, []);
+  }, [params.bookId]);
 
   return (
     <div className="container">
