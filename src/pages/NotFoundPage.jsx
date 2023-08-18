@@ -5,7 +5,7 @@ export default function NotFoundPage() {
     <div className="container">
       <h1 className="text-5xl   pb-4">OPPS, 404, page not found</h1>
       <p className="text-lg">The page was not found</p>
-      <Link className="underline" to={'/'}>
+      <Link className="underline text-2xl pt-4 block" to={'/'}>
         try home page
       </Link>
     </div>

@@ -19,6 +19,12 @@ export default function Header() {
           >
             About
           </Link>
+          <Link
+            to="/books"
+            className="border hover:bg-slate-200 border-black  px-3 py-1"
+          >
+            Books
+          </Link>
         </nav>
       </div>
     </header>
