@@ -4,7 +4,25 @@ import BookItem from '../components/BookItem';
 
 export default function BooksPage() {
   const [mainBooksArr, setMainBooksArr] = useState([]);
-  // filte state 'currentCategory'
+  // filter state 'currentCategory'
+  const [currentCategory, setCurrentCategory] = useState(false);
+  console.log('currentCategory ===', currentCategory);
+  function handleCategory(event) {
+    console.log('selected', event.target.checked);
+    console.log('selected', event.target.value);
+    setCurrentCategory(event.target.checked ? event.target.value : false);
+  }
+
+  let filteredBooksArr = mainBooksArr.filter(
+    ({ category }) => category === currentCategory,
+  );
+  console.table(filteredBooksArr);
+
+  if (currentCategory === false) {
+    // jei filtras nuimtas tai rodom visas knygas
+    filteredBooksArr = mainBooksArr;
+  }
+
   useEffect(() => {
     axios
       .get('/db/books.json')
@@ -26,23 +44,39 @@ export default function BooksPage() {
         <legend>Filter books</legend>
 
         <div className="flex gap-2">
-          <input type="checkbox" id="fantasy" />
+          <input
+            type="checkbox"
+            id="fantasy"
+            value="Fantasy"
+            onChange={handleCategory}
+          />
           <label htmlFor="fantasy">Fantasy</label>
         </div>
         <div className="flex gap-2">
-          <input type="checkbox" id="fiction" />
+          <input
+            type="checkbox"
+            value="Fiction"
+            id="fiction"
+            onChange={handleCategory}
+          />
           <label htmlFor="fiction">Fiction</label>
         </div>
         <div className="flex gap-2">
-          <input type="checkbox" id="reality" />
+          <input
+            type="checkbox"
+            id="reality"
+            value="Reality"
+            onChange={handleCategory}
+          />
           <label htmlFor="reality">Reality</label>
         </div>
       </fieldset>
+      <h3>current filter: {currentCategory}</h3>
 
       <h2 className="text-2xl font font-medium mb-2">Pick a book</h2>
       <ul>
         {/* sukti cikla per bookData ir sugeneruoti nuorodas su title */}
-        {mainBooksArr.map((bObj) => (
+        {filteredBooksArr.map((bObj) => (
           <BookItem
             key={bObj.id}
             title={bObj.title}
