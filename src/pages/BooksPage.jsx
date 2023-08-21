@@ -2,8 +2,17 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import BookItem from '../components/BookItem';
 
+const filterObj = {
+  fantasy: true,
+  reality: true,
+  fiction: false,
+};
+
+const filterArr = ['Fantasy'];
+
 export default function BooksPage() {
   const [mainBooksArr, setMainBooksArr] = useState([]);
+  // const allCategories = mainBooksArr.reduce(() => {});
   // filter state 'currentCategory'
   const [currentCategory, setCurrentCategory] = useState(false);
   console.log('currentCategory ===', currentCategory);
