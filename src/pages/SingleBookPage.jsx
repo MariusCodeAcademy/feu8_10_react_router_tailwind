@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { bookData } from '../assets/db';
 
 export default function SingleBookPage() {
   const params = useParams();
@@ -9,11 +9,18 @@ export default function SingleBookPage() {
   const [currentBook, setCurrentBook] = useState({});
 
   useEffect(() => {
-    console.log('bookData ===', bookData);
-    // surasti knygos objekta kurio id yra lygus params.bookId
-    const found = bookData.find((bObj) => bObj.id.toString() === params.bookId);
-    console.log('found ===', found);
-    setCurrentBook(found);
+    (async () => {
+      const resp = await axios.get('/db/books.json');
+      console.log('resp ===', resp);
+      const bookData = resp.data;
+      console.log('bookData ===', bookData);
+      // surasti knygos objekta kurio id yra lygus params.bookId
+      const found = bookData.find(
+        (bObj) => bObj.id.toString() === params.bookId,
+      );
+      console.log('found ===', found);
+      setCurrentBook(found);
+    })();
   }, [params.bookId]);
 
   return (
