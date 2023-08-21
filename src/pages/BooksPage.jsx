@@ -26,8 +26,9 @@ export default function BooksPage() {
         {/* sukti cikla per bookData ir sugeneruoti nuorodas su title */}
         {mainBooksArr.map((bObj) => (
           <li key={bObj.id}>
-            <Link className="underline" to={`/books/${bObj.id}`}>
-              {bObj.title}
+            <Link className="" to={`/books/${bObj.id}`}>
+              <span>{bObj.title}</span> - <strong>category: </strong>
+              {bObj.category}
             </Link>
           </li>
         ))}
