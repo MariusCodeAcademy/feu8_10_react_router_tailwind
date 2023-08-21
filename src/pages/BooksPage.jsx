@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import BookItem from '../components/BookItem';
 
 export default function BooksPage() {
   const [mainBooksArr, setMainBooksArr] = useState([]);
@@ -25,12 +26,12 @@ export default function BooksPage() {
       <ul>
         {/* sukti cikla per bookData ir sugeneruoti nuorodas su title */}
         {mainBooksArr.map((bObj) => (
-          <li key={bObj.id}>
-            <Link className="" to={`/books/${bObj.id}`}>
-              <span>{bObj.title}</span> - <strong>category: </strong>
-              {bObj.category}
-            </Link>
-          </li>
+          <BookItem
+            key={bObj.id}
+            title={bObj.title}
+            id={bObj.id}
+            category={bObj.category}
+          />
         ))}
       </ul>
     </div>
