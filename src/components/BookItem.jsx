@@ -14,7 +14,10 @@ function BookItem(props) {
 // aprasom duomenu tipus ir reikalinguma su proptypes
 BookItem.propTypes = {
   title: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([
+    PropTypes.number.isRequired,
+    PropTypes.string.isRequired,
+  ]),
   category: PropTypes.string.isRequired,
 };
 
