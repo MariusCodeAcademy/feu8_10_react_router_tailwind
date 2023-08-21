@@ -4,6 +4,7 @@ import BookItem from '../components/BookItem';
 
 export default function BooksPage() {
   const [mainBooksArr, setMainBooksArr] = useState([]);
+  // filte state 'currentCategory'
   useEffect(() => {
     axios
       .get('/db/books.json')
@@ -20,6 +21,23 @@ export default function BooksPage() {
     <div className="container">
       <h1 className="text-3xl font-bold underline pb-4">Books page</h1>
       <p>See alll the books we have</p>
+
+      <fieldset className="border border-slate-500 p-4 flex gap-4">
+        <legend>Filter books</legend>
+
+        <div className="flex gap-2">
+          <input type="checkbox" id="fantasy" />
+          <label htmlFor="fantasy">Fantasy</label>
+        </div>
+        <div className="flex gap-2">
+          <input type="checkbox" id="fiction" />
+          <label htmlFor="fiction">Fiction</label>
+        </div>
+        <div className="flex gap-2">
+          <input type="checkbox" id="reality" />
+          <label htmlFor="reality">Reality</label>
+        </div>
+      </fieldset>
 
       <h2 className="text-2xl font font-medium mb-2">Pick a book</h2>
       <ul>
