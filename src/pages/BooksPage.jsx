@@ -14,7 +14,7 @@ export default function BooksPage() {
   }
 
   let filteredBooksArr = mainBooksArr.filter(
-    ({ category }) => category === currentCategory,
+    (bObj) => bObj.category === currentCategory,
   );
   console.table(filteredBooksArr);
 
