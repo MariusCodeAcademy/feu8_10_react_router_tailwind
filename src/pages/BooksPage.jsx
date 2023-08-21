@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { bookData } from '../assets/db';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function BooksPage() {
+  const [mainBooksArr, setMainBooksArr] = useState([]);
   useEffect(() => {
     axios
       .get('/db/books.json')
       .then((resp) => {
         console.log('resp.data ===', resp.data);
+        setMainBooksArr(resp.data);
       })
       .catch((error) => {
         console.warn('ivyko klaida:', error);
@@ -23,7 +24,7 @@ export default function BooksPage() {
       <h2 className="text-2xl font font-medium mb-2">Pick a book</h2>
       <ul>
         {/* sukti cikla per bookData ir sugeneruoti nuorodas su title */}
-        {bookData.map((bObj) => (
+        {mainBooksArr.map((bObj) => (
           <li key={bObj.id}>
             <Link className="underline" to={`/books/${bObj.id}`}>
               {bObj.title}
