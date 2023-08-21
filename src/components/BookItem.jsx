@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; // ES6
 
-export default function BookItem(props) {
+function BookItem(props) {
   return (
     <li>
       <Link className="" to={`/books/${props.id}`}>
@@ -10,3 +11,11 @@ export default function BookItem(props) {
     </li>
   );
 }
+// aprasom duomenu tipus ir reikalinguma su proptypes
+BookItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  category: PropTypes.string.isRequired,
+};
+
+export default BookItem;
