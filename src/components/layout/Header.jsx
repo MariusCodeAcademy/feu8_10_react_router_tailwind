@@ -25,6 +25,12 @@ export default function Header() {
           >
             Books
           </NavLink>
+          <NavLink
+            to="/add-book"
+            className="border hover:bg-slate-200 border-black  px-3 py-1"
+          >
+            Create Book
+          </NavLink>
         </nav>
       </div>
     </header>
