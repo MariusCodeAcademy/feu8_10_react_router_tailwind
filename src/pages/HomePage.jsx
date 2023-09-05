@@ -2,7 +2,7 @@ export default function HomePage() {
   return (
     <div className="container">
       <h1 className="text-3xl font-bold underline pb-4">
-        Welcome to Home page
+        Welcome to Home page WAS EDITED
       </h1>
       <p>
         <strong>better than skelbiu lt</strong> Lorem ipsum dolor sit amet
